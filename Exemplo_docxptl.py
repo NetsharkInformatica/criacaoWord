@@ -7,9 +7,9 @@ import win32com.client
 import pandas as pd
 
 # Ler o arquivo
-df = pd.read_csv('C:\\docxptl_exemplo\\times_dos_famosos.csv', sep=';')
+df = pd.read_csv('times_dos_famosos.csv', sep=';')
 
-modelo = DocxTemplate('C:\\docxptl_exemplo\\doc_xptl_exemplo.docx')
+modelo = DocxTemplate('doc_xptl_exemplo.docx')
 
 # Preecher a lista de personalidades (nome e respectivos atividade e time)
 # E uma lista de dicionarios, cara personalidade tem seu dicionario na lista, com seus dados
@@ -20,8 +20,8 @@ for indice, linha in df.iterrows():
     {'atividade' : linha['atividade'],
      'artista'   : linha['artista'],
      'time'      : InlineImage(modelo,
-                                           'C:\\docxptl_exemplo\\' + linha['time'] + '.png',
-                                            width=Mm(32))}
+      'docxptl_exemplo' + linha['time'] + '.png',
+       width=Mm(32))}
      )
 # next
 
@@ -51,7 +51,7 @@ parametros = {
 }
 
 modelo.render(parametros)
-saida = 'C:\\docxptl_exemplo\\relatorio.docx'
+saida = 'relatorio.docx'
 try:
   modelo.save(saida)
   # word = win32com.client.Dispatch("Word.Application")
